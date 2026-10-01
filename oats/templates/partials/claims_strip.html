@@ -1,0 +1,14 @@
+{# Nutrition messaging. Numbers only ever appear once site.claims_locked is true. #}
+{% if site.claims_locked and f is defined %}
+{% set n = claims(f) %}
+<ul class="stats" aria-label="Per serving">
+<li><strong>{{ n.protein_g }}g</strong><span>protein</span></li>
+<li><strong>{{ n.fiber_g }}g</strong><span>fiber</span></li>
+<li><strong>{{ n.kcal }}</strong><span>calories</span></li>
+</ul>
+{% else %}
+<ul class="pills pills-big" aria-label="What it is">
+{% for d in site.claims.descriptors %}<li class="pill">{{ d }}</li>{% endfor %}
+</ul>
+<p class="small muted">{{ site.claims.footnote }}</p>
+{% endif %}

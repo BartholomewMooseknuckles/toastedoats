@@ -1,0 +1,46 @@
+{% from "partials/macros.html" import picture, signup, fcard with context %}
+{% set canonical = public_origin ~ request.script_root ~ (request.path if request.path == '/' else request.path.rstrip('/')) %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{{ site.brand }} — {{ site.tagline }}{% endblock %}</title>
+<meta name="description" content="{% block description %}{{ site.subline }} One creamy toasted-oat base, seven flavor swirls, seven crunch mix-ins. Pre-orders open.{% endblock %}">
+<link rel="canonical" href="{{ canonical }}">
+<meta name="theme-color" content="#F9F2E8">
+<meta property="og:type" content="{% block ogtype %}website{% endblock %}">
+<meta property="og:site_name" content="{{ site.brand }}">
+<meta property="og:title" content="{{ self.title() }}">
+<meta property="og:description" content="{{ self.description() }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:image" content="{% block ogimage %}{{ public_origin }}{{ asset('img/og.jpg') }}{% endblock %}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
+<link rel="icon" href="{{ asset('favicon.ico') }}" sizes="32x32">
+<link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+{# no ?v= on fonts: the URL must match the one in tokens.css exactly or the browser fetches twice #}
+<link rel="preload" href="{{ url_for('static', filename='fonts/archivo-var.woff2') }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ url_for('static', filename='fonts/permanent-marker.woff2') }}" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{ asset('css/tokens.css') }}">
+<link rel="stylesheet" href="{{ theme_url }}">
+<link rel="stylesheet" href="{{ asset('css/base.css') }}">
+<link rel="stylesheet" href="{{ asset('css/components.css') }}">
+<link rel="stylesheet" href="{{ asset('css/sections.css') }}">
+<link rel="stylesheet" href="{{ asset('css/motion.css') }}">
+<script type="application/json" id="oats-config">{{ client_config|safe }}</script>
+<script type="module" src="{{ asset('js/main.js') }}"></script>
+{% block head %}{% endblock %}
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+<a class="skip" href="#main">Skip to content</a>
+{% include "partials/header.html" %}
+<main id="main"{% block mainattrs %}{% endblock %}>
+{% block main %}{% endblock %}
+</main>
+{% include "partials/footer.html" %}
+{% include "partials/cart_drawer.html" %}
+</body>
+</html>

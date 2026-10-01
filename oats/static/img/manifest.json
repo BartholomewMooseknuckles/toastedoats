@@ -1,0 +1,465 @@
+{
+ "after-hours": {
+  "alt": "A Choco Peanut Butter bowl beside a pouch reading 'For when you're toasted'",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 351,
+  "width": 310,
+  "widths": [
+   310,
+   620
+  ]
+ },
+ "card-birthday-cake": {
+  "alt": "Birthday Cake pouch beside a bowl of oat pudding with frosting swirl, cake crunch and rainbow sprinkles",
+  "bg": "#f4e9db",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 270,
+  "width": 352,
+  "widths": [
+   352,
+   704
+  ]
+ },
+ "card-blueberry-cobbler": {
+  "alt": "Blueberry Cobbler pouch beside a bowl of oat pudding with deep blueberry swirl and golden cobbler crumble",
+  "bg": "#b4aad8",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 270,
+  "width": 358,
+  "widths": [
+   358,
+   716
+  ]
+ },
+ "card-choco-peanut-butter": {
+  "alt": "Choco Peanut Butter pouch beside a bowl of oat pudding with a thick peanut butter ribbon and roasted peanut crunch",
+  "bg": "#dfad7c",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 338,
+  "width": 450,
+  "widths": [
+   450,
+   900
+  ]
+ },
+ "card-chocolate-brownie-fudge": {
+  "alt": "Chocolate Brownie Fudge pouch beside a bowl of cocoa oat pudding with thick fudge swirl and brownie chunks",
+  "bg": "#753f2b",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 384,
+  "width": 512,
+  "widths": [
+   512,
+   1024
+  ]
+ },
+ "card-cookies-and-cream": {
+  "alt": "Cookies & Cream pouch beside a bowl of pale oat pudding covered in dark chocolate cookie rubble",
+  "bg": "#d8c8be",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 347,
+  "width": 463,
+  "widths": [
+   463,
+   926
+  ]
+ },
+ "card-strawberry-shortcake": {
+  "alt": "Strawberry Shortcake pouch beside a bowl of oat pudding with red strawberry swirl and shortcake crumbs",
+  "bg": "#eda4a5",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 270,
+  "width": 358,
+  "widths": [
+   358,
+   716
+  ]
+ },
+ "card-vanilla-crunch": {
+  "alt": "Vanilla Crunch pouch beside a bowl of creamy oat pudding topped with vanilla swirl and toasted cereal crunch",
+  "bg": "#f3ddc2",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 266,
+  "width": 357,
+  "widths": [
+   357,
+   714
+  ]
+ },
+ "hero-bowl": {
+  "alt": "A spoon digging into a big bowl of oat pudding with strawberry swirl and crunch, with 'Make it. Swirl it. Crunch it.' handwritten above",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 351,
+  "width": 480,
+  "widths": [
+   480,
+   960
+  ]
+ },
+ "lineup": {
+  "alt": "All seven Toasted Oats pouches lined up on a shelf",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 203,
+  "width": 656,
+  "widths": [
+   656,
+   1312
+  ]
+ },
+ "macro-birthday-cake": {
+  "alt": "Close-up of frosting swirl, cake crunch and sprinkles",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 184,
+  "width": 184,
+  "widths": [
+   184,
+   368
+  ]
+ },
+ "macro-blueberry-cobbler": {
+  "alt": "Close-up of blueberry compote swirl and cobbler crumble",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 184,
+  "width": 184,
+  "widths": [
+   184,
+   368
+  ]
+ },
+ "macro-choco-peanut-butter": {
+  "alt": "Close-up of peanut butter ribbon and peanut crunch",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 184,
+  "width": 184,
+  "widths": [
+   184,
+   368
+  ]
+ },
+ "macro-chocolate-brownie-fudge": {
+  "alt": "Close-up of fudge swirl and brownie pieces",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 184,
+  "width": 184,
+  "widths": [
+   184,
+   368
+  ]
+ },
+ "macro-cookies-and-cream": {
+  "alt": "Close-up of chocolate cookie chunks on cream oat pudding",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 184,
+  "width": 184,
+  "widths": [
+   184,
+   368
+  ]
+ },
+ "macro-strawberry-shortcake": {
+  "alt": "Close-up of strawberry swirl and shortcake crumbs on oat pudding",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 184,
+  "width": 184,
+  "widths": [
+   184,
+   368
+  ]
+ },
+ "macro-vanilla-crunch": {
+  "alt": "Close-up of vanilla swirl and cereal crunch on oat pudding",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 184,
+  "width": 184,
+  "widths": [
+   184,
+   368
+  ]
+ },
+ "pouch-birthday-cake": {
+  "alt": "Toasted Oats Birthday Cake pouch",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 398,
+  "width": 184,
+  "widths": [
+   184,
+   368
+  ]
+ },
+ "pouch-blueberry-cobbler": {
+  "alt": "Toasted Oats Blueberry Cobbler pouch",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 398,
+  "width": 188,
+  "widths": [
+   188,
+   376
+  ]
+ },
+ "pouch-choco-peanut-butter": {
+  "alt": "Toasted Oats Choco Peanut Butter pouch",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 398,
+  "width": 190,
+  "widths": [
+   190,
+   380
+  ]
+ },
+ "pouch-chocolate-brownie-fudge": {
+  "alt": "Toasted Oats Chocolate Brownie Fudge pouch",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 398,
+  "width": 188,
+  "widths": [
+   188,
+   376
+  ]
+ },
+ "pouch-cookies-and-cream": {
+  "alt": "Toasted Oats Cookies & Cream pouch",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 398,
+  "width": 188,
+  "widths": [
+   188,
+   376
+  ]
+ },
+ "pouch-strawberry-shortcake": {
+  "alt": "Toasted Oats Strawberry Shortcake pouch",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 398,
+  "width": 184,
+  "widths": [
+   184,
+   368
+  ]
+ },
+ "pouch-vanilla-crunch": {
+  "alt": "Toasted Oats Vanilla Crunch pouch",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 398,
+  "width": 188,
+  "widths": [
+   188,
+   376
+  ]
+ },
+ "ritual-1-base": {
+  "alt": "Sweet Cream Base pouch next to an empty glass jar",
+  "bg": "#fce9d6",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 413,
+  "width": 330,
+  "widths": [
+   330,
+   660
+  ]
+ },
+ "ritual-2-milk": {
+  "alt": "Oat base and milk pouring into a glass jar",
+  "bg": "#f5e5d5",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 413,
+  "width": 335,
+  "widths": [
+   335,
+   670
+  ]
+ },
+ "ritual-3-set": {
+  "alt": "A jar of thick, set oat pudding",
+  "bg": "#f2dfce",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 413,
+  "width": 316,
+  "widths": [
+   316,
+   632
+  ]
+ },
+ "ritual-4-swirl": {
+  "alt": "Strawberry swirl being squeezed into the jar of oat pudding",
+  "bg": "#eed8c6",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 413,
+  "width": 325,
+  "widths": [
+   325,
+   650
+  ]
+ },
+ "ritual-5-crunch": {
+  "alt": "Crunch clusters falling onto the finished strawberry oat pudding",
+  "bg": "#dab394",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 413,
+  "width": 337,
+  "widths": [
+   337,
+   674
+  ]
+ },
+ "system-base": {
+  "alt": "Sweet Cream Base pouch",
+  "bg": "#e6dcd0",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 178,
+  "width": 158,
+  "widths": [
+   158,
+   316
+  ]
+ },
+ "system-crunch": {
+  "alt": "Crunch mix-in packet of toasted cereal clusters",
+  "bg": "#dbcabb",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 178,
+  "width": 106,
+  "widths": [
+   106,
+   212
+  ]
+ },
+ "system-swirl": {
+  "alt": "Flavor swirl sachet filled with strawberry",
+  "bg": "#e3d5c8",
+  "formats": [
+   "avif",
+   "webp",
+   "jpg"
+  ],
+  "height": 178,
+  "width": 104,
+  "widths": [
+   104,
+   208
+  ]
+ }
+}

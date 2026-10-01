@@ -1,0 +1,14 @@
+# Cloudflare Tunnel ingress for the site, for tunnels configured by file
+# (/etc/cloudflared/config.yml). Dashboard-managed tunnels: add the same thing as a Public
+# Hostname - domain 2birds1joint.org, path ^/?oats(/|$), service http://127.0.0.1:8090 -
+# and drag it ABOVE any catch-all rule for the same hostname.
+#
+# cloudflared does not strip the matched path; the app expects the full /oats/... path.
+ingress:
+  - hostname: 2birds1joint.org
+    path: ^/oats(/|$)
+    service: http://127.0.0.1:8090
+  # whatever already serves the rest of the domain goes here, after the /oats rule
+  # - hostname: 2birds1joint.org
+  #   service: http://127.0.0.1:3000
+  - service: http_status:404

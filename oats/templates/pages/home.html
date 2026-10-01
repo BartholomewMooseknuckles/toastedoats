@@ -1,0 +1,218 @@
+{% extends "base.html" %}
+{% block bodyclass %}page-home{% endblock %}
+{% block head %}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": site.brand,
+  "url": public_origin ~ url_for('pages.home'),
+  "logo": public_origin ~ asset('apple-touch-icon.png'),
+  "email": site.contact.email,
+  "sameAs": ["https://instagram.com/" ~ site.contact.instagram, "https://tiktok.com/@" ~ site.contact.tiktok]
+}|tojson }}</script>
+{% endblock %}
+{% block main %}
+
+{# ------------------------------------------------------------------ 1. hero #}
+<section class="hero" data-module="hero" data-flavor="{{ catalog.flavors[0].slug }}" aria-labelledby="hero-title">
+<div class="wrap hero-in">
+<div class="hero-copy">
+<p class="eyebrow"><span class="badge badge-preorder">{{ site.launch.preorder_badge }}</span> {{ site.descriptor }}</p>
+<h1 id="hero-title" class="display display-xl">Same base.<br>Different vibes.</h1>
+<p class="lede">{{ site.subline }}</p>
+<div class="cta-row">
+<a class="btn btn-lg" href="{{ url_for('pages.flavors') }}">Shop flavors <span aria-hidden="true">&rarr;</span></a>
+<a class="btn btn-ghost btn-lg" href="{{ url_for('pages.how') }}">How it works</a>
+</div>
+<ul class="pills" aria-label="What it is">
+{% for d in site.claims.descriptors %}<li class="pill">{{ d }}</li>{% endfor %}
+</ul>
+</div>
+<div class="hero-art">
+<div class="hero-stack">
+{% for f in catalog.flavors %}
+<figure class="hero-slide{% if loop.first %} is-active{% endif %}" data-flavor="{{ f.slug }}" data-i="{{ loop.index0 }}">
+{{ picture('card-' ~ f.slug, '(min-width: 900px) 560px, 92vw', 'hero-pic', loading=('eager' if loop.index <= 2 else 'lazy'), priority=loop.first) }}
+<figcaption class="hero-chip"><span class="dot" aria-hidden="true"></span>{{ f.name }}</figcaption>
+</figure>
+{% endfor %}
+</div>
+<p class="marker hero-marker" aria-hidden="true">Make it.<br>Swirl it.<br>Crunch it.</p>
+<ol class="hero-dots" aria-label="Flavors">
+{% for f in catalog.flavors %}<li><button type="button" data-goto="{{ loop.index0 }}" aria-label="Show {{ f.name }}"{% if loop.first %} aria-current="true"{% endif %}></button></li>{% endfor %}
+</ol>
+</div>
+</div>
+</section>
+
+{# ---------------------------------------------------------------- 2. system #}
+<section class="system section" aria-labelledby="system-title">
+<div class="wrap">
+<p class="eyebrow">The system</p>
+<h2 id="system-title" class="display display-l">One creamy base.<br>Endless combos.</h2>
+<p class="lede measure">Every pouch starts with the same Sweet Cream Base. The swirl and the crunch do the talking - which is how seven flavors turn into seven completely different bowls.</p>
+<ol class="system-row">
+<li class="tile img-bg-system-base">
+{{ picture('system-base', '(min-width: 700px) 180px, 40vw', 'tile-pic') }}
+<h3>Sweet Cream Base</h3><p>Just add milk. Refrigerate overnight.</p>
+</li>
+<li class="system-plus" aria-hidden="true">+</li>
+<li class="tile img-bg-system-swirl">
+{{ picture('system-swirl', '(min-width: 700px) 140px, 30vw', 'tile-pic') }}
+<h3>Flavor Swirl</h3><p>Packed with real flavor.</p>
+</li>
+<li class="system-plus" aria-hidden="true">+</li>
+<li class="tile img-bg-system-crunch">
+{{ picture('system-crunch', '(min-width: 700px) 140px, 30vw', 'tile-pic') }}
+<h3>Crunch Mix-in</h3><p>The texture that hits.</p>
+</li>
+</ol>
+</div>
+</section>
+
+{# ---------------------------------------------------------------- 3. ritual #}
+{% include "partials/ritual.html" %}
+
+{# ----------------------------------------------------------- 4. morph + grid #}
+<section class="morph" data-module="morph" data-flavor="{{ catalog.flavors[0].slug }}" aria-labelledby="morph-title">
+<div class="morph-stage">
+<div class="wrap morph-in">
+<div class="morph-copy">
+<p class="eyebrow">Same base</p>
+<h2 id="morph-title" class="display display-l">Seven vibes.<br>One bowl.</h2>
+<ol class="morph-names">
+{% for f in catalog.flavors %}
+<li data-i="{{ loop.index0 }}"{% if loop.first %} class="is-active"{% endif %}><a href="{{ url_for('pages.flavor', slug=f.slug) }}">{{ f.name }}</a><span class="morph-short">{{ f.short }}</span></li>
+{% endfor %}
+</ol>
+</div>
+<div class="morph-frame">
+{% for f in catalog.flavors %}
+<figure class="morph-slide{% if loop.first %} is-active{% endif %}" data-flavor="{{ f.slug }}" data-i="{{ loop.index0 }}">
+{{ picture('card-' ~ f.slug, '(min-width: 900px) 520px, 90vw', 'morph-pic') }}
+</figure>
+{% endfor %}
+</div>
+</div>
+</div>
+</section>
+
+<section class="grid-section section" id="flavors" aria-labelledby="grid-title">
+<div class="wrap">
+<div class="section-head">
+<div><p class="eyebrow">The lineup</p><h2 id="grid-title" class="display display-l">Pick a vibe.</h2></div>
+<a class="btn btn-ghost" href="{{ url_for('pages.flavors') }}">All flavors</a>
+</div>
+<div class="fgrid">
+{% for f in catalog.flavors %}{{ fcard(f) }}{% endfor %}
+</div>
+</div>
+</section>
+
+{# ------------------------------------------------------------ 5. why toasted #}
+<section class="why section" aria-labelledby="why-title">
+<div class="wrap why-in">
+<div class="why-copy">
+<p class="eyebrow">The name</p>
+<h2 id="why-title" class="display display-l">Why toasted?</h2>
+<p class="lede">Because they are.</p>
+<p>We toast the oats and we toast the hemp hearts before anything gets milled. Toasting brings out warm, nutty, roasted-cereal notes that raw oats just don't have - it's why the base tastes like something instead of tasting like fuel.</p>
+<p class="marker marker-big">We toast the oats.<br>We toast the hemp.<br>You can connect the dots.</p>
+</div>
+<div class="why-art">
+{{ picture('macro-vanilla-crunch', '(min-width: 900px) 360px, 70vw', 'why-pic why-pic-1') }}
+{{ picture('macro-blueberry-cobbler', '(min-width: 900px) 300px, 55vw', 'why-pic why-pic-2') }}
+</div>
+</div>
+</section>
+
+{# --------------------------------------------------------------- 6. real food #}
+<section class="real section" aria-labelledby="real-title">
+<div class="wrap">
+<p class="eyebrow">What's in it</p>
+<h2 id="real-title" class="display display-l">Real food that<br>hits like dessert.</h2>
+<ul class="ingredients">
+<li><strong>Toasted oats</strong><span>The grain. Finely milled so it sets like pudding, not porridge.</span></li>
+<li><strong>Toasted hemp hearts</strong><span>Nutty, protein-rich, good fats - and the reason the base is more than oats.</span></li>
+<li><strong>Chia</strong><span>Fiber, and the structure that makes it thick.</span></li>
+<li><strong>Protein</strong><span>Enough to make it a meal. Not enough to taste like a gym.</span></li>
+<li><strong>Fiber</strong><span>The quiet kind. You won't notice it. That's the point.</span></li>
+<li><strong>Real flavor</strong><span>Fruit, cocoa, peanut, vanilla, cinnamon. Things with names.</span></li>
+</ul>
+{% include "partials/claims_strip.html" %}
+</div>
+</section>
+
+{# -------------------------------------------------------------- 7. interrupt #}
+<section class="interrupt" aria-label="A big bowl of strawberry shortcake oat pudding">
+{{ picture('hero-bowl', '100vw', 'interrupt-pic') }}
+<p class="marker interrupt-caption" aria-hidden="true">Big bowl energy.</p>
+</section>
+
+{# ------------------------------------------------------------- 8. after hours #}
+<section class="after section" aria-labelledby="after-title" data-flavor="choco-peanut-butter">
+<div class="wrap after-in">
+<div class="after-copy">
+<p class="eyebrow">After hours</p>
+<h2 id="after-title" class="display display-l">For when you're toasted.<br><span class="after-alt">Or just hungry.</span></h2>
+<p class="lede">Munchies, handled. Late-night bowls, fresh batches, and the monthly <em>In Rotation</em> flavor - subscribers get it first.</p>
+{{ signup('after-signup', kind='newsletter', source='after-hours', cta='Stay toasted') }}
+</div>
+<div class="after-art">
+{{ picture('after-hours', '(min-width: 900px) 420px, 80vw', 'after-pic') }}
+</div>
+</div>
+</section>
+
+{# -------------------------------------------------------------------- 9. shop #}
+<section class="shop section" id="shop" aria-labelledby="shop-title">
+<div class="wrap">
+<div class="section-head">
+<div><p class="eyebrow">Pre-orders open</p><h2 id="shop-title" class="display display-l">Pick your box.</h2></div>
+<div class="sub-toggle" data-module="subtoggle">
+<span class="sub-toggle-label">One-time</span>
+<button class="switch" type="button" role="switch" aria-checked="false" data-sub-switch><span class="switch-knob"></span><span class="sr-only">Subscribe and save {{ site.subscribe.discount_pct }}%</span></button>
+<span class="sub-toggle-label">Subscribe &amp; save {{ site.subscribe.discount_pct }}%</span>
+</div>
+</div>
+<div class="boxes">
+{% for b in catalog.boxes if b.type != 'single' %}
+<article class="box{% if b.popular %} box-popular{% endif %}">
+{% if b.popular %}<span class="badge badge-pop">Most popular</span>{% endif %}
+<h3 class="display display-m">{{ b.name }}</h3>
+<p class="box-blurb">{{ b.blurb }}</p>
+<p class="box-units">{{ b.units }} pouches</p>
+<p class="box-price"><span class="price-once" data-price-once>{{ unit(b.sku) }}</span><span class="price-sub" data-price-sub hidden>{{ unit(b.sku, True) }}</span>
+{% if b.compare_cents %}<s class="compare">{{ money(b.compare_cents) }}</s>{% endif %}</p>
+<p class="box-per"><span data-per-once>{{ per_serving(b.sku) }}</span><span data-per-sub hidden>{{ per_serving(b.sku, True) }}</span> per bowl{% if savings(b.sku) %} · save {{ money(savings(b.sku)) }}{% endif %}</p>
+{% if b.type == 'fixed' %}
+<button class="btn btn-block" type="button" data-add='{"sku":"{{ b.sku }}"}' data-add-sub>Add the Starter Box</button>
+{% else %}
+<a class="btn btn-block{% if not b.popular %} btn-ghost{% endif %}" href="{{ url_for('pages.build') }}?size={{ b.units }}">Build this box</a>
+{% endif %}
+</article>
+{% endfor %}
+</div>
+<ul class="perks">
+{% for p in site.subscribe.perks %}<li>{{ p }}</li>{% endfor %}
+<li>Free shipping over {{ money(site.shipping.free_threshold_cents) }}</li>
+</ul>
+{% if not site.pricing_locked %}<p class="small muted">Pre-order pricing. {{ site.launch.preorder_note }}</p>{% endif %}
+</div>
+</section>
+
+{# ----------------------------------------------------------------- faq teaser #}
+<section class="faq-teaser section" aria-labelledby="faqt-title">
+<div class="wrap">
+<div class="section-head">
+<div><p class="eyebrow">Questions</p><h2 id="faqt-title" class="display display-l">Fair enough.</h2></div>
+<a class="btn btn-ghost" href="{{ url_for('pages.faq') }}">All the answers</a>
+</div>
+<div class="accordion">
+{% for q in faq %}
+<details class="acc"{% if loop.first %} open{% endif %}><summary>{{ q.q }}</summary><p>{{ q.a }}</p></details>
+{% endfor %}
+</div>
+</div>
+</section>
+{% endblock %}

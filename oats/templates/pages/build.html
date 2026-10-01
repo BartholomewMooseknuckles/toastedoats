@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Build a box — {{ site.brand }}{% endblock %}
+{% block description %}Build a 14 or 28 pouch box of Toasted Oats, any mix of seven flavors. Pre-order pricing from {{ per_serving('byo-28') }} a bowl.{% endblock %}
+{% block bodyclass %}page-build{% endblock %}
+{% block main %}
+<section class="page-hero">
+<div class="wrap">
+<p class="eyebrow">Build a box</p>
+<h1 class="display display-xl">Your mix.</h1>
+<p class="lede measure">Pick a size, then fill it with whatever vibes you want. All one flavor is allowed. We won't judge. Much.</p>
+</div>
+</section>
+
+<section class="section section-tight builder" data-module="builder">
+<div class="wrap builder-in">
+<div class="builder-main">
+<fieldset class="sizes">
+<legend class="eyebrow">Size</legend>
+{% for b in catalog.boxes if b.type == 'byo' %}
+<label class="size{% if b.popular %} size-popular{% endif %}">
+<input type="radio" name="size" value="{{ b.sku }}" data-units="{{ b.units }}"{% if loop.first %} checked{% endif %}>
+<span class="size-body">
+<span class="size-name">{{ b.units }} pouches</span>
+<span class="size-price" data-size-price-once>{{ unit(b.sku) }}</span>
+<span class="size-price" data-size-price-sub hidden>{{ unit(b.sku, True) }}</span>
+<span class="size-per"><span data-size-per-once>{{ per_serving(b.sku) }}</span><span data-size-per-sub hidden>{{ per_serving(b.sku, True) }}</span> per bowl{% if savings(b.sku) %} · save {{ money(savings(b.sku)) }}{% endif %}</span>
+{% if b.popular %}<span class="badge badge-pop">Most popular</span>{% endif %}
+</span>
+</label>
+{% endfor %}
+</fieldset>
+
+<div class="picker">
+<p class="eyebrow">Flavors</p>
+<ul class="picks">
+{% for f in catalog.flavors %}
+<li class="pick" data-flavor="{{ f.slug }}" data-slug="{{ f.slug }}">
+{{ picture('pouch-' ~ f.slug, '72px', 'pick-pic') }}
+<div class="pick-body">
+<span class="pick-name">{{ f.name }}</span>
+<span class="pick-short">{{ f.short }}</span>
+</div>
+<div class="qty qty-sm">
+<button type="button" class="qty-btn" data-pick-dec aria-label="Fewer {{ f.name }}">&minus;</button>
+<output class="pick-n" data-pick-n aria-label="{{ f.name }} count">0</output>
+<button type="button" class="qty-btn" data-pick-inc aria-label="More {{ f.name }}">+</button>
+</div>
+</li>
+{% endfor %}
+</ul>
+</div>
+</div>
+
+<aside class="builder-side">
+<div class="builder-card">
+<p class="eyebrow">Your box</p>
+<p class="builder-count"><strong data-count>0</strong> of <span data-units-label>14</span></p>
+<div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="14" aria-valuenow="0" data-progress><span class="progress-fill" data-progress-fill></span></div>
+<ul class="builder-summary" data-summary></ul>
+<label class="sub-row">
+<input type="checkbox" name="subscribe" data-builder-sub>
+<span>Subscribe &amp; save {{ site.subscribe.discount_pct }}% - every <span data-cadence-label>4 weeks</span>, skip or cancel any time</span>
+</label>
+<select class="input input-sm" data-builder-cadence aria-label="Delivery cadence" hidden>
+{% for c in site.subscribe.cadences %}<option value="{{ c.id }}"{% if c.id == site.subscribe.default %} selected{% endif %}>{{ c.label }}</option>{% endfor %}
+</select>
+<p class="builder-total"><span>Total</span><strong data-total>{{ unit('byo-14') }}</strong></p>
+<button class="btn btn-block btn-lg" type="button" data-builder-add disabled>Fill the box first</button>
+<p class="small muted">{{ site.launch.preorder_note }}</p>
+<button class="linklike small" type="button" data-builder-fill>Surprise me (one of everything, then repeat)</button>
+</div>
+</aside>
+</div>
+</section>
+{% endblock %}

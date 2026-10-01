@@ -1,0 +1,7 @@
+/* Generated from content/products.json - do not edit by hand. */
+{% for f in catalog.flavors %}
+[data-flavor="{{ f.slug }}"]{--f-bg:{{ f.theme.bg }};--f-soft:{{ f.theme.soft }};--f-ink:{{ f.theme.ink }};--f-accent:{{ f.theme.accent }};--f-accent-ink:{{ f.theme.accent_ink }};--f-swirl:{{ f.theme.swirl }}}
+{% endfor %}
+{% for name, m in images.items() if m.bg %}
+.img-bg-{{ name }}{background-color:{{ m.bg }}}
+{% endfor %}

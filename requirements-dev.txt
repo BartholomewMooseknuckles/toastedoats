@@ -1,0 +1,6 @@
+-r requirements.txt
+# tools/slice.py and tools/og.py only - never needed on the server
+pillow>=11.2
+fonttools
+brotli
+pytest

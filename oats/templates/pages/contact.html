@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Contact — {{ site.brand }}{% endblock %}
+{% block description %}Questions, wholesale, press, or a flavor you wish existed. Email {{ site.contact.email }} or send a message.{% endblock %}
+{% block bodyclass %}page-contact{% endblock %}
+{% block main %}
+<section class="page-hero">
+<div class="wrap">
+<p class="eyebrow">Contact</p>
+<h1 class="display display-xl">Say hi.</h1>
+<p class="lede measure">Questions, wholesale, press, a flavor you wish existed. Email <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a> or use the form - a human reads both.</p>
+</div>
+</section>
+<section class="section section-tight">
+<div class="wrap narrow">
+<form class="co-form" method="post" action="{{ url_for('api.message') }}" data-form="message">
+<input type="hidden" name="source" value="contact">
+<input type="hidden" name="next" value="{{ request.script_root }}{{ request.path }}">
+<div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+<div class="field"><label for="c-name">Name</label><input class="input" id="c-name" name="name" type="text" autocomplete="name" maxlength="80"></div>
+<div class="field"><label for="c-email">Email <span class="req">required</span></label><input class="input" id="c-email" name="email" type="email" autocomplete="email" required maxlength="254"></div>
+<div class="field"><label for="c-msg">Message <span class="req">required</span></label><textarea class="input" id="c-msg" name="message" rows="6" required maxlength="2000"></textarea></div>
+<p class="form-status" data-status aria-live="polite">{% if request.args.get('ok') %}Got it. We'll get back to you.{% elif request.args.get('err') == 'email' %}That email doesn't look right.{% elif request.args.get('err') == 'message' %}Say a little more than that.{% endif %}</p>
+<button class="btn btn-lg" type="submit">Send</button>
+</form>
+</div>
+</section>
+{% endblock %}

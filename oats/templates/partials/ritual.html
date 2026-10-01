@@ -1,0 +1,56 @@
+{# The signature ritual. Sticky stage, five frames, copy scrolls alongside. scroll.js sets
+   data-active (1-5) and --p / --step-p on the section; motion.css does the rest. #}
+{# data-flavor: the frames are strawberry, so the ribbon overlay takes the strawberry swirl token #}
+<section class="ritual section" data-module="ritual" data-active="1" data-flavor="strawberry-shortcake" aria-labelledby="ritual-title">
+<div class="wrap">
+<div class="section-head ritual-head">
+<div><p class="eyebrow">The ritual</p><h2 id="ritual-title" class="display display-l">Make it.<br>Swirl it.<br>Crunch it.</h2></div>
+<p class="lede measure-s">Five steps. Four of them are "wait". The last one is the good part.</p>
+</div>
+<div class="ritual-in">
+<div class="ritual-stage img-bg-ritual-1-base" aria-hidden="true">
+{% for key in ['base', 'milk', 'set', 'swirl', 'crunch'] %}
+<figure class="ritual-frame" data-i="{{ loop.index }}">{{ picture('ritual-' ~ loop.index ~ '-' ~ key, '(min-width: 900px) 440px, 86vw', 'ritual-pic', loading=('eager' if loop.first else 'lazy')) }}</figure>
+{% endfor %}
+<svg class="ritual-fx" viewBox="0 0 400 500" fill="none" aria-hidden="true">
+<g class="fx fx-milk"><rect x="186" y="0" width="14" height="260" rx="7" fill="#fff"/></g>
+<g class="fx fx-ribbon"><path class="fx-ribbon-path" d="M120 250 C 180 220, 240 300, 300 262 S 340 320, 110 330 S 300 400, 280 360" stroke="var(--f-swirl, #E8304A)" stroke-width="18" stroke-linecap="round"/></g>
+<g class="fx fx-crumbs">
+<circle cx="120" cy="40" r="9" fill="#D9A46B"/><circle cx="170" cy="20" r="7" fill="#C98A3F"/><circle cx="230" cy="50" r="10" fill="#E0B06E"/><circle cx="280" cy="25" r="6" fill="#C98A3F"/><circle cx="200" cy="80" r="8" fill="#D9A46B"/><circle cx="150" cy="100" r="5" fill="#E0B06E"/><circle cx="260" cy="95" r="7" fill="#D9A46B"/>
+</g>
+</svg>
+<ol class="ritual-dots">
+{% for i in range(1, 6) %}<li data-i="{{ i }}"></li>{% endfor %}
+</ol>
+</div>
+<ol class="ritual-steps">
+<li class="step" data-i="1">
+<span class="step-n">01</span>
+<h3 class="display display-m">Pour</h3>
+<p>Start with the Sweet Cream Base: finely milled toasted oats, toasted hemp hearts and chia. Not a bag of loose oats.</p>
+</li>
+<li class="step" data-i="2">
+<span class="step-n">02</span>
+<h3 class="display display-m">Add milk</h3>
+<p>About two-thirds of a cup of whatever milk you drink. Stir it, or shake it if you're in a jar. Ten seconds.</p>
+</li>
+<li class="step" data-i="3">
+<span class="step-n">03</span>
+<h3 class="display display-m">Set overnight</h3>
+<p>Go to bed. Wake up to thick, creamy oat pudding. Not oatmeal. Pudding.</p>
+</li>
+<li class="step" data-i="4">
+<span class="step-n">04</span>
+<h3 class="display display-m">Swirl</h3>
+<p>Squeeze in the flavor swirl. Ribbons, not a mix - leave it marbled. That's where the big flavor lives.</p>
+</li>
+<li class="step" data-i="5">
+<span class="step-n">05</span>
+<h3 class="display display-m">Crunch</h3>
+<p>Tear open the crunch and pile it on. It ships in its own packet so it's never, ever soggy.</p>
+<a class="btn" href="{{ url_for('pages.flavors') }}">Pick a flavor</a>
+</li>
+</ol>
+</div>
+</div>
+</section>

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Accessibility — {{ site.brand }}{% endblock %}
+{% block description %}How this site is built to be usable by everyone, and how to tell us when it isn't.{% endblock %}
+{% block bodyclass %}page-legal{% endblock %}
+{% block main %}
+<section class="page-hero page-hero-tight"><div class="wrap"><p class="eyebrow">Accessibility</p><h1 class="display display-xl">Everyone eats.</h1></div></section>
+<section class="section section-tight"><div class="wrap narrow prose">
+<p>We build this site to WCAG 2.2 AA: real headings, labelled forms, keyboard access to everything including the cart, visible focus, text that scales, colour contrast of at least 4.5:1 on every flavor theme, and animation that switches off when your system asks for reduced motion.</p>
+<p>Images of food are described in words. Prices are text, not pictures. The site works without JavaScript except for building a box, which falls back to the waitlist.</p>
+<p>If something is hard to use, tell us: <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a>. Say which page and what happened and we'll fix it, and reply to you when we have.</p>
+</div></section>
+{% endblock %}

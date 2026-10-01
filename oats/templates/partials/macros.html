@@ -1,0 +1,45 @@
+{# Responsive image from a slot in static/img/manifest.json. #}
+{% macro picture(name, sizes="100vw", cls="", loading="lazy", priority=False) %}
+{% set m = img(name) %}
+<picture class="{{ cls }}">
+{% for fmt in m.formats if fmt != "jpg" %}
+<source type="image/{{ fmt }}" srcset="{% for w in m.widths %}{{ asset('img/' ~ name ~ '-' ~ w ~ '.' ~ fmt) }} {{ w }}w{% if not loop.last %}, {% endif %}{% endfor %}" sizes="{{ sizes }}">
+{% endfor %}
+<img src="{{ asset('img/' ~ name ~ '-' ~ m.widths[0] ~ '.jpg') }}" srcset="{% for w in m.widths %}{{ asset('img/' ~ name ~ '-' ~ w ~ '.jpg') }} {{ w }}w{% if not loop.last %}, {% endif %}{% endfor %}" sizes="{{ sizes }}" width="{{ m.width }}" height="{{ m.height }}" alt="{{ m.alt }}"{% if priority %} fetchpriority="high" loading="eager"{% else %} loading="{{ loading }}" decoding="async"{% endif %}>
+</picture>
+{% endmacro %}
+
+{# Email capture. Works without JavaScript: posts the form and comes back with ?ok=1. #}
+{% macro signup(id, kind="waitlist", source="site", cta="Join the waitlist", placeholder="you@email.com", flavor="") %}
+<form class="signup" id="{{ id }}" method="post" action="{{ url_for('api.signup') }}" data-form="signup">
+<input type="hidden" name="kind" value="{{ kind }}">
+<input type="hidden" name="source" value="{{ source }}">
+{% if flavor %}<input type="hidden" name="flavor" value="{{ flavor }}">{% endif %}
+<input type="hidden" name="next" value="{{ request.script_root }}{{ request.path }}">
+<div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+<div class="signup-row">
+<label class="sr-only" for="{{ id }}-email">Email address</label>
+<input class="input" id="{{ id }}-email" type="email" name="email" required placeholder="{{ placeholder }}" autocomplete="email" inputmode="email" maxlength="254">
+<button class="btn" type="submit">{{ cta }}</button>
+</div>
+<p class="form-status" data-status aria-live="polite">{% if request.args.get('ok') %}You're in. We'll email you when the first batch is ready.{% elif request.args.get('err') == 'email' %}That email doesn't look right.{% endif %}</p>
+</form>
+{% endmacro %}
+
+{# One flavor in a grid. The section's data-flavor tokens colour it. #}
+{% macro fcard(f, sizes="(min-width: 1100px) 360px, (min-width: 620px) 46vw, 92vw", heading="h3") %}
+<article class="fcard" data-flavor="{{ f.slug }}">
+<a class="fcard-media" href="{{ url_for('pages.flavor', slug=f.slug) }}" tabindex="-1" aria-hidden="true">{{ picture('card-' ~ f.slug, sizes, 'fcard-pic') }}</a>
+<div class="fcard-body">
+<div class="fcard-top">
+<{{ heading }} class="fcard-name"><a href="{{ url_for('pages.flavor', slug=f.slug) }}">{{ f.name }}</a></{{ heading }}>
+{% if f.badges %}<span class="badge">{{ f.badges[0] }}</span>{% endif %}
+</div>
+<p class="fcard-short">{{ f.short }}</p>
+<div class="fcard-row">
+<span class="price">{{ unit('single-7') }}<small> 7-pack · {{ per_serving('single-7') }}/bowl</small></span>
+<button class="btn btn-sm" type="button" data-add='{"sku":"single-7","flavor":"{{ f.slug }}"}'>Add</button>
+</div>
+</div>
+</article>
+{% endmacro %}

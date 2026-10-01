@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Terms — {{ site.brand }}{% endblock %}
+{% block description %}The terms for pre-ordering Toasted Oats: what a reservation is, what it isn't, and the usual.{% endblock %}
+{% block bodyclass %}page-legal{% endblock %}
+{% block main %}
+<section class="page-hero page-hero-tight"><div class="wrap"><p class="eyebrow">Terms</p><h1 class="display display-xl">The usual, in English.</h1><p class="small muted">Last updated {{ site.legal.updated }}</p></div></section>
+<section class="section section-tight"><div class="wrap narrow prose">
+<h2>Pre-orders</h2>
+<p>A reservation is a request, not a purchase. No payment is taken when you reserve. When product is ready to ship we will email you a checkout link with the final price, which may differ from the pre-order pricing shown on this site. You can ignore that email; if you do, the reservation lapses and nothing happens. Reservations don't guarantee availability of a particular flavor.</p>
+<h2>Subscriptions</h2>
+<p>When subscriptions go live, each order is charged when it ships, you'll get an email before every renewal, and you can skip, swap flavors or cancel any time from the link in that email. No fees, no phone calls.</p>
+<h2>Shipping and returns</h2>
+<p>{{ site.shipping.regions }} Food is food: we can't take it back once it's shipped, but if something arrives damaged or wrong, email us within 7 days with a photo and we'll replace it or refund it.</p>
+<h2>Nutrition and allergens</h2>
+<p>Until the final formula is published, nutrition information on this site is descriptive, not a label. The pack is the label. Products are made in a facility that may handle milk, wheat, soy, peanuts and tree nuts; see each product page for its allergen statement. Hemp hearts contain no THC.</p>
+<h2>This site</h2>
+<p>Everything here - words, images, the name - belongs to {{ site.legal.entity }} or its licensors. Don't copy it for a competing product. Prices and flavors can change without notice. We try to keep the site accurate and working; it's provided as is.</p>
+<h2>The legal paragraph</h2>
+<p>To the fullest extent the law allows, {{ site.legal.entity }} isn't liable for indirect or consequential damages arising from use of this site or its products, and total liability is capped at what you paid us. These terms are governed by the laws of the United States and the state where {{ site.legal.entity }} is organized. If any part is unenforceable the rest still stands.</p>
+<p>Questions: <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a>.</p>
+</div></section>
+{% endblock %}

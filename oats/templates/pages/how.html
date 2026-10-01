@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}How it works — {{ site.brand }}{% endblock %}
+{% block description %}Make it, swirl it, crunch it. Pour the Sweet Cream Base, add milk, set overnight, squeeze in the flavor swirl and pile on the crunch. Five steps to thick, creamy oat pudding.{% endblock %}
+{% block bodyclass %}page-how{% endblock %}
+{% block main %}
+<section class="page-hero">
+<div class="wrap">
+<p class="eyebrow">How it works</p>
+<h1 class="display display-xl">Make it.<br>Swirl it.<br>Crunch it.</h1>
+<p class="lede measure">Tonight takes about forty seconds. Tomorrow takes about ten. The fridge does the rest.</p>
+</div>
+</section>
+{% include "partials/ritual.html" %}
+<section class="section">
+<div class="wrap">
+<p class="eyebrow">Good to know</p>
+<h2 class="display display-l">The small print, big.</h2>
+<div class="tips">
+<div class="tip"><h3>Any milk</h3><p>Dairy, oat, almond, soy - about 2/3 cup (140-180 mL). Less milk, thicker pudding. We like it thick.</p></div>
+<div class="tip"><h3>Jar or bowl</h3><p>A jar lets you shake instead of stir and takes the whole thing to work. A bowl is a bowl.</p></div>
+<div class="tip"><h3>Overnight means 6+ hours</h3><p>Four in a pinch. It's edible after one, but it's oatmeal after one. Give it the night.</p></div>
+<div class="tip"><h3>Swirl last-ish, crunch last</h3><p>The swirl can go in the night before if you want it to bleed through. The crunch never can. That's why it's in its own packet.</p></div>
+<div class="tip"><h3>Three days</h3><p>Once it's made, eat it within three days. It won't last that long.</p></div>
+<div class="tip"><h3>Warm it?</h3><p>You can. Thirty seconds in the microwave turns it into something between pudding and a baked oat. Still add the crunch after.</p></div>
+</div>
+</div>
+</section>
+<section class="section band" data-flavor="strawberry-shortcake">
+<div class="wrap band-in">
+<div><p class="eyebrow">Ready?</p><h2 class="display display-l">Pick a vibe.</h2></div>
+<a class="btn btn-lg" href="{{ url_for('pages.flavors') }}">Shop flavors &rarr;</a>
+</div>
+</section>
+{% endblock %}

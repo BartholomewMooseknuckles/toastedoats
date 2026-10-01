@@ -1,0 +1,15 @@
+# runtime state, never the sources
+*.db
+*.db-wal
+*.db-shm
+*.env
+!*.env.example
+oats/dist/
+
+# local tooling
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+node_modules/
+.DS_Store

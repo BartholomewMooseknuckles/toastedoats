@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Privacy — {{ site.brand }}{% endblock %}
+{% block description %}What Toasted Oats collects (an email address, a pre-order), what it doesn't (tracking), and how to have it deleted.{% endblock %}
+{% block bodyclass %}page-legal{% endblock %}
+{% block main %}
+<section class="page-hero page-hero-tight"><div class="wrap"><p class="eyebrow">Privacy</p><h1 class="display display-xl">Short, because there's not much.</h1><p class="small muted">Last updated {{ site.legal.updated }}</p></div></section>
+<section class="section section-tight"><div class="wrap narrow prose">
+<h2>What we collect</h2>
+<p>Only what you type into a form: your email address, and if you reserve a box, your name, ZIP code, flavor picks and any notes. If you message us, the message. That's it.</p>
+<h2>What we don't</h2>
+<p>This site sets no cookies and loads nothing from third parties - no analytics, no pixels, no ad tags. Your box is kept in your own browser's storage until you reserve it. We do not store IP addresses or device fingerprints.</p>
+<h2>What we do with it</h2>
+<p>We email you about the thing you asked about: the waitlist, your pre-order, the newsletter if you joined it. Every email has an unsubscribe link. We do not sell, rent or share your information with anyone, and we never will.</p>
+<h2 id="choices">Your choices</h2>
+<p>Email <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a> from the address in question and we'll delete everything we have about you, usually the same day. California residents: we do not sell or share personal information as those terms are defined under the CCPA/CPRA, so there's nothing to opt out of, but the request above works all the same.</p>
+<h2>Where it lives</h2>
+<p>On a server we run, in the United States, behind Cloudflare. Cloudflare sees the traffic the way any network provider would; see their privacy policy for how they handle it.</p>
+<h2>Children</h2>
+<p>This site isn't directed at children under 13 and we don't knowingly collect their information.</p>
+<h2>Changes</h2>
+<p>If this policy changes in a way that matters, the date at the top changes and we'll say so in the next email.</p>
+</div></section>
+{% endblock %}

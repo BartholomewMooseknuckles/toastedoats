@@ -1,0 +1,11 @@
+[Unit]
+Description=Nightly copy of the Toasted Oats database
+
+[Service]
+Type=oneshot
+User=newsfeed
+Group=newsfeed
+WorkingDirectory=/opt/oats/app
+EnvironmentFile=/opt/oats/oats.env
+ExecStart=/opt/oats/venv/bin/python -m oats backup --dir /opt/oats/backup --keep-days 30
+Nice=10

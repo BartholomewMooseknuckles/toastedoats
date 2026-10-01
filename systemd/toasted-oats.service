@@ -1,0 +1,33 @@
+[Unit]
+Description=Toasted Oats site (marketing + pre-order capture, served at /oats)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=newsfeed
+Group=newsfeed
+WorkingDirectory=/opt/oats/app
+EnvironmentFile=/opt/oats/oats.env
+# One worker on purpose: the in-memory rate limiter is then global and SQLite has a single
+# writer. Eight threads is plenty for a marketing site behind Cloudflare's cache.
+# The access-log format leaves out the user agent and referer - nothing about a visitor
+# needs to be in the journal.
+ExecStart=/opt/oats/venv/bin/gunicorn --bind ${OATS_BIND}:${OATS_PORT} \
+          --workers 1 --threads 8 --timeout 30 --access-logfile - \
+          --access-logformat '%%(t)s %%(m)s %%(U)s %%(s)s %%(D)sus' \
+          'oats.app:create_app()'
+Restart=always
+RestartSec=5
+# it only needs to read its code and write its database
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/opt/oats
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+
+[Install]
+WantedBy=multi-user.target

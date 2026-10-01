@@ -1,0 +1,22 @@
+<div class="bar"><div class="wrap">{{ site.announcement }}</div></div>
+<header class="hdr" data-module="nav">
+<div class="wrap hdr-in">
+<a class="wordmark" href="{{ url_for('pages.home') }}" aria-label="{{ site.brand }} — home">
+<span class="wordmark-l1">TOASTED</span><span class="wordmark-l2">OATS<sup>™</sup></span>
+</a>
+<nav class="nav" id="nav" aria-label="Main">
+<ul>
+{% for item in site.nav %}
+<li><a href="{{ url_for(item.endpoint) }}"{% if request.endpoint == item.endpoint %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+{% endfor %}
+<li class="nav-mobile-only"><a href="{{ url_for('pages.faq') }}">FAQ</a></li>
+</ul>
+</nav>
+<div class="hdr-actions">
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav"><span class="nav-toggle-bar"></span><span class="sr-only">Menu</span></button>
+<button class="cart-btn" type="button" data-open-cart aria-label="Open your box">
+<span class="cart-btn-label">Box</span><span class="cart-count" data-cart-count aria-live="polite">0</span>
+</button>
+</div>
+</div>
+</header>

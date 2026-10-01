@@ -1,0 +1,61 @@
+{
+  "_comment": "Site-wide settings that are safe to commit. Anything secret or machine-specific (port, public origin, Stripe keys) lives in oats.env, never here. Flags: `mode` full|coming_soon, `checkout.mode` preorder|stripe|shopify, `claims_locked` turns numeric nutrition on, `pricing_locked` removes the pre-order pricing note, `reviews_enabled` reserves the review slots until there are real reviews.",
+  "brand": "Toasted Oats",
+  "wordmark": ["TOASTED", "OATS"],
+  "descriptor": "Blended Oat Pudding",
+  "tagline": "Same base. Different vibes.",
+  "subline": "Creamy oat pudding. Big flavor. Real ingredients.",
+  "ritual": ["Make it.", "Swirl it.", "Crunch it."],
+  "mode": "full",
+  "checkout": {
+    "mode": "preorder",
+    "stripe": {"_comment": "When mode is stripe: set OATS_STRIPE_SECRET in oats.env and fill stripe_price ids per SKU below.", "prices": {}},
+    "shopify": {"_comment": "When mode is shopify: store domain plus a variant id per SKU.", "domain": "", "variants": {}}
+  },
+  "claims_locked": false,
+  "pricing_locked": false,
+  "reviews_enabled": false,
+  "claims": {
+    "descriptors": ["Protein-forward", "Fiber-rich", "Plant-forward", "No artificial bullshit"],
+    "ingredients": ["Toasted oats", "Toasted hemp hearts", "Chia", "Protein", "Fiber", "Real fruit, cocoa, peanut & vanilla"],
+    "footnote": "Final Nutrition Facts are being verified with our co-packer and will be published before the first box ships."
+  },
+  "subscribe": {
+    "discount_pct": 15,
+    "cadences": [
+      {"id": "2w", "label": "Every 2 weeks"},
+      {"id": "4w", "label": "Every 4 weeks"},
+      {"id": "6w", "label": "Every 6 weeks"}
+    ],
+    "default": "4w",
+    "perks": ["Save 15% on every box", "Monthly In Rotation flavor drop, subscribers first", "Skip, swap or cancel in one tap - no calls, no forms"]
+  },
+  "shipping": {
+    "free_threshold_cents": 4500,
+    "flat_cents": 695,
+    "regions": "Ships to the lower 48 US states."
+  },
+  "launch": {
+    "eta": "Spring 2027",
+    "preorder_note": "Reserve your box. Nothing is charged until we ship.",
+    "preorder_badge": "Pre-order"
+  },
+  "announcement": "Pre-orders open · Free shipping over $45 · Subscribe & save 15%",
+  "contact": {
+    "email": "hello@2birds1joint.org",
+    "instagram": "toastedoats",
+    "tiktok": "toastedoats"
+  },
+  "legal": {
+    "entity": "Toasted Oats",
+    "parent": "2 Birds 1 Joint",
+    "parent_url": "https://2birds1joint.org",
+    "updated": "October 1, 2026"
+  },
+  "nav": [
+    {"label": "Shop", "endpoint": "pages.flavors"},
+    {"label": "Build a box", "endpoint": "pages.build"},
+    {"label": "How it works", "endpoint": "pages.how"},
+    {"label": "Our story", "endpoint": "pages.story"}
+  ]
+}

@@ -1,0 +1,22 @@
+<dialog class="drawer" id="cart-drawer" aria-labelledby="cart-title" data-module="drawer">
+<div class="drawer-in">
+<header class="drawer-hd">
+<h2 id="cart-title" class="display display-s">Your box</h2>
+<button class="drawer-close" type="button" data-close-cart aria-label="Close">&times;</button>
+</header>
+<div class="drawer-body">
+<ul class="cart-lines" data-cart-lines></ul>
+<div class="cart-empty" data-cart-empty>
+<p class="display display-s">Nothing in here yet.</p>
+<p class="muted">Crumbs, maybe.</p>
+<a class="btn" href="{{ url_for('pages.flavors') }}" data-close-cart-nav>Shop flavors</a>
+</div>
+</div>
+<footer class="drawer-ft" data-cart-footer hidden>
+<p class="cart-ship small" data-cart-ship></p>
+<div class="cart-total"><span>Subtotal</span><strong data-cart-subtotal>$0</strong></div>
+<p class="small muted">{{ site.launch.preorder_note }}</p>
+<a class="btn btn-block" href="{{ url_for('pages.checkout') }}">Reserve my box &rarr;</a>
+</footer>
+</div>
+</dialog>

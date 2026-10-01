@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Not found — {{ site.brand }}{% endblock %}
+{% block description %}That page isn't here.{% endblock %}
+{% block bodyclass %}page-404{% endblock %}
+{% block head %}<meta name="robots" content="noindex">{% endblock %}
+{% block main %}
+<section class="page-hero">
+<div class="wrap">
+<p class="eyebrow">404</p>
+<h1 class="display display-xl">Nothing here.<br>Just crumbs.</h1>
+<p class="lede measure">The page moved, or never existed, or you typed it one-handed while holding a bowl. Respect.</p>
+<div class="cta-row">
+<a class="btn btn-lg" href="{{ url_for('pages.home') }}">Home</a>
+<a class="btn btn-ghost btn-lg" href="{{ url_for('pages.flavors') }}">Shop flavors</a>
+</div>
+</div>
+</section>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Our story — {{ site.brand }}{% endblock %}
+{% block description %}Why a creamy oat pudding, why one base with seven swirls and crunches, and why it's called Toasted. A premium dessert brand disguised as a macro-friendly breakfast brand.{% endblock %}
+{% block bodyclass %}page-story{% endblock %}
+{% block main %}
+<section class="page-hero">
+<div class="wrap">
+<p class="eyebrow">Our story</p>
+<h1 class="display display-xl">Dessert energy.<br>Breakfast macros.</h1>
+<p class="lede measure">We wanted something that looks like you shouldn't be allowed to eat it while watching your macros. Then we made it out of oats.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap prose">
+<h2 class="display display-l">Pudding, not oatmeal.</h2>
+<p>Overnight oats are a great idea with a texture problem. Soaked whole oats stay loose and a little slimy, and the toppings sink. So we don't use whole oats. The Sweet Cream Base is finely milled toasted oats, toasted hemp hearts and chia - it hydrates into something thick and smooth, closer to a frozen-custard base than a bowl of porridge.</p>
+<p>Then it gets treated like a custard base: an intensely flavored swirl, a separate crunch, piled on right before you eat. Greek-yogurt mix-ins, pudding, overnight oats and the frozen-custard flavor board, all in one jar.</p>
+
+<h2 class="display display-l">One base. Seven vibes.</h2>
+<p>Rather than engineer a different nutritional foundation for every flavor, every pouch starts from the same base. Flavors come from three small, loud things: a dry flavor modifier in the base (cocoa, peanut, cake), a swirl (strawberry, blueberry, fudge, frosting) and a crunch (shortcake crumbs, cobbler crumble, brownie chunks, cookie rubble). Small amounts, dramatic results, same macros underneath. It's how a good custard shop works, and it's why we can keep dropping flavors without touching the formula.</p>
+
+<h2 class="display display-l">Why "toasted"?</h2>
+<p>Literally, because we toast the oats and we lightly toast the hemp hearts before milling. Toasting is what gives the base its warm, nutty, roasted-cereal flavor; raw oats taste like the box they came in.</p>
+<p>Culturally, you know. We know you know. The joke works because everything else about this brand is serious: the ingredients, the texture, the photography, the macros. No leaves on the pack, no fake dispensary graphics, nothing in the pouch but food. A food brand that a certain culture adopts - not a novelty product pretending to be food.</p>
+<p class="marker marker-big">We toast the oats.<br>We toast the hemp.<br>You can connect the dots.</p>
+
+<h2 class="display display-l">What it isn't.</h2>
+<ul>
+<li>It isn't a supplement. Taste first, then texture, then satiety, then nutrition. In that order.</li>
+<li>It isn't "functional". No adaptogens, no mushrooms, no terpenes, no cannabis. Oats, hemp hearts, chia, protein, fiber, real flavor.</li>
+<li>It isn't done yet. We're locking the final formula with our co-packer now, which is why the macros on this site are words, not numbers. Numbers come when they're real.</li>
+</ul>
+
+<h2 class="display display-l">Big bowl energy.</h2>
+<p>Pre-orders are open. Reserve a box, tell us your flavors, and you'll be the first to eat it when the first batch is ready. Nothing is charged until we ship.</p>
+<p><a class="btn btn-lg" href="{{ url_for('pages.flavors') }}">Shop flavors &rarr;</a></p>
+</div>
+</section>
+
+<section class="interrupt" aria-label="The full Toasted Oats lineup">
+{{ picture('lineup', '100vw', 'interrupt-pic interrupt-wide') }}
+</section>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}All flavors — {{ site.brand }}{% endblock %}
+{% block description %}Seven flavors, one creamy toasted-oat base. Vanilla Crunch, Strawberry Shortcake, Blueberry Cobbler, Birthday Cake, Cookies & Cream, Chocolate Brownie Fudge and Choco Peanut Butter. Pre-order 7-packs or build a box.{% endblock %}
+{% block bodyclass %}page-flavors{% endblock %}
+{% block main %}
+<section class="page-hero">
+<div class="wrap">
+<p class="eyebrow">The lineup</p>
+<h1 class="display display-xl">Seven vibes.</h1>
+<p class="lede measure">Same creamy base in every pouch. Pick a 7-pack of one flavor, or <a href="{{ url_for('pages.build') }}">build a box</a> and mix them.</p>
+</div>
+</section>
+<section class="section section-tight">
+<div class="wrap">
+<div class="fgrid fgrid-3">
+{% for f in catalog.flavors %}{{ fcard(f, heading="h2") }}{% endfor %}
+</div>
+</div>
+</section>
+<section class="section band" data-flavor="cookies-and-cream">
+<div class="wrap band-in">
+<div>
+<p class="eyebrow">Can't decide?</p>
+<h2 class="display display-l">Get one of everything.</h2>
+<p class="lede">The Starter Box: all seven flavors, {{ unit('starter-7') }}, {{ per_serving('starter-7') }} a bowl.</p>
+</div>
+<button class="btn btn-lg" type="button" data-add='{"sku":"starter-7"}'>Add the Starter Box</button>
+</div>
+</section>
+{% endblock %}

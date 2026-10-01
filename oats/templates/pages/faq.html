@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}FAQ — {{ site.brand }}{% endblock %}
+{% block description %}What Toasted Oats is, how to make it, what's in it, whether there's cannabis in it (no), how pre-orders and subscriptions work, and where we ship.{% endblock %}
+{% block bodyclass %}page-faq{% endblock %}
+{% block head %}
+<script type="application/ld+json">{{ {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faq_ld}|tojson }}</script>
+{% endblock %}
+{% block main %}
+<section class="page-hero">
+<div class="wrap">
+<p class="eyebrow">Questions</p>
+<h1 class="display display-xl">Fair enough.</h1>
+<p class="lede measure">If it isn't here, <a href="{{ url_for('pages.contact') }}">ask us</a>. We answer like people.</p>
+</div>
+</section>
+<section class="section section-tight">
+<div class="wrap narrow">
+<div class="accordion accordion-big">
+{% for q in faq %}
+<details class="acc" id="q{{ loop.index }}"{% if loop.first %} open{% endif %}><summary>{{ q.q }}</summary><p>{{ q.a }}</p></details>
+{% endfor %}
+</div>
+</div>
+</section>
+{% endblock %}

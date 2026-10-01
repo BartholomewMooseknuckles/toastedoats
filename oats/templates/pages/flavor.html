@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% block title %}{{ f.name }} — {{ site.brand }}{% endblock %}
+{% block description %}{{ f.name }}: {{ f.short|lower }}. {{ f.description }}{% endblock %}
+{% block ogtype %}product{% endblock %}
+{% block ogimage %}{{ public_origin }}{{ asset('img/card-' ~ f.slug ~ '-' ~ img('card-' ~ f.slug).widths[-1] ~ '.jpg') }}{% endblock %}
+{% block bodyclass %}page-flavor{% endblock %}
+{% block mainattrs %} data-flavor="{{ f.slug }}"{% endblock %}
+{% block head %}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": site.brand ~ " " ~ f.name,
+  "description": f.description,
+  "image": [public_origin ~ asset('img/card-' ~ f.slug ~ '-' ~ img('card-' ~ f.slug).widths[-1] ~ '.jpg')],
+  "brand": {"@type": "Brand", "name": site.brand},
+  "offers": {
+    "@type": "Offer",
+    "url": public_origin ~ url_for('pages.flavor', slug=f.slug),
+    "price": "%.2f"|format(catalog.unit_cents('single-7') / 100),
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/PreOrder"
+  }
+}|tojson }}</script>
+{% endblock %}
+{% block main %}
+<article class="pdp">
+<section class="pdp-hero">
+<div class="wrap pdp-in">
+<div class="pdp-media">
+{{ picture('card-' ~ f.slug, '(min-width: 900px) 600px, 100vw', 'pdp-pic', priority=True) }}
+<div class="pdp-thumbs" aria-label="More views">
+{{ picture('macro-' ~ f.slug, '160px', 'pdp-thumb') }}
+{{ picture('pouch-' ~ f.slug, '110px', 'pdp-thumb pdp-thumb-pouch') }}
+</div>
+</div>
+<div class="pdp-buy">
+<p class="eyebrow"><span class="badge badge-preorder">{{ site.launch.preorder_badge }}</span>{% for b in f.badges %} <span class="badge">{{ b }}</span>{% endfor %}</p>
+<h1 class="display display-xl">{{ f.name }}</h1>
+<p class="lede">{{ f.short }}.</p>
+<p class="marker pdp-tag">{{ f.tagline }}</p>
+<p>{{ f.description }}</p>
+
+<form class="buy" data-module="buy" data-sku="single-7" data-flavor="{{ f.slug }}">
+<fieldset class="buy-plan">
+<legend class="sr-only">Purchase plan</legend>
+<label class="plan">
+<input type="radio" name="plan" value="once" checked>
+<span class="plan-body"><span class="plan-name">One-time</span><span class="plan-price">{{ unit('single-7') }}</span><span class="plan-per">7-pack · {{ per_serving('single-7') }} per bowl</span></span>
+</label>
+<label class="plan">
+<input type="radio" name="plan" value="subscribe">
+<span class="plan-body"><span class="plan-name">Subscribe &amp; save {{ site.subscribe.discount_pct }}%</span><span class="plan-price">{{ unit('single-7', True) }}</span><span class="plan-per">{{ per_serving('single-7', True) }} per bowl · skip or cancel any time</span></span>
+</label>
+</fieldset>
+<div class="buy-row">
+<div class="qty" data-qty>
+<button type="button" class="qty-btn" data-qty-dec aria-label="Fewer">&minus;</button>
+<input class="qty-input" type="number" name="qty" value="1" min="1" max="24" inputmode="numeric" aria-label="Quantity">
+<button type="button" class="qty-btn" data-qty-inc aria-label="More">+</button>
+</div>
+<button class="btn btn-lg btn-grow" type="submit">Add to box <span aria-hidden="true">&middot;</span> <span data-buy-total>{{ unit('single-7') }}</span></button>
+</div>
+<p class="small muted">{{ site.launch.preorder_note }} Free shipping over {{ money(site.shipping.free_threshold_cents) }}.</p>
+</form>
+</div>
+</div>
+</section>
+
+<section class="section pdp-story">
+<div class="wrap">
+<p class="eyebrow">What makes it {{ f.name }}</p>
+<h2 class="display display-l">Base. Swirl. Crunch.</h2>
+<div class="story-grid">
+<div class="story-cell">
+<p class="story-k">Base</p>
+<h3>{{ f.base }}</h3>
+<p>The same creamy toasted-oat pudding in every flavor, tuned for this one.</p>
+</div>
+<div class="story-cell">
+<p class="story-k">Swirl</p>
+<h3>{{ f.swirl.name }}</h3>
+<p>{{ f.swirl.desc }}</p>
+</div>
+<div class="story-cell">
+<p class="story-k">Crunch</p>
+<h3>{{ f.crunch.name }}</h3>
+<p>{{ f.crunch.desc }}</p>
+</div>
+<div class="story-media">{{ picture('macro-' ~ f.slug, '(min-width: 900px) 360px, 90vw', 'story-pic') }}</div>
+</div>
+</div>
+</section>
+
+<section class="section pdp-how">
+<div class="wrap">
+<div class="section-head">
+<div><p class="eyebrow">Tonight &rarr; tomorrow</p><h2 class="display display-l">How to make it.</h2></div>
+<a class="btn btn-ghost" href="{{ url_for('pages.how') }}">The full ritual</a>
+</div>
+<ol class="steps3">
+<li><span class="step-n">01</span><h3>Base + milk</h3><p>Pour the base in a jar, add about 2/3 cup of any milk, shake. Fridge, overnight.</p></li>
+<li><span class="step-n">02</span><h3>Swirl</h3><p>Squeeze in the {{ f.swirl.name|lower }}. Leave it marbled.</p></li>
+<li><span class="step-n">03</span><h3>Crunch</h3><p>Pile on the {{ f.crunch.name|lower }} and eat it before anyone else sees it.</p></li>
+</ol>
+</div>
+</section>
+
+<section class="section pdp-nutrition">
+<div class="wrap">
+<p class="eyebrow">What's in it</p>
+<h2 class="display display-l">Real ingredients.</h2>
+<ul class="pills">
+{% for i in site.claims.ingredients %}<li class="pill">{{ i }}</li>{% endfor %}
+</ul>
+{% include "partials/claims_strip.html" %}
+<p class="small allergen">{{ f.claims.allergens }}</p>
+</div>
+</section>
+
+<section class="section pdp-faq">
+<div class="wrap">
+<h2 class="display display-l">Questions.</h2>
+<div class="accordion">
+{% for q in faq %}<details class="acc"><summary>{{ q.q }}</summary><p>{{ q.a }}</p></details>{% endfor %}
+</div>
+<p><a href="{{ url_for('pages.faq') }}">All the answers &rarr;</a></p>
+</div>
+</section>
+
+<section class="section pdp-more">
+<div class="wrap">
+<div class="section-head">
+<div><p class="eyebrow">Also in rotation</p><h2 class="display display-l">Different vibes.</h2></div>
+<a class="btn btn-ghost" href="{{ url_for('pages.flavors') }}">All flavors</a>
+</div>
+<div class="fgrid fgrid-3">
+{% for n in neighbours %}{{ fcard(n) }}{% endfor %}
+</div>
+</div>
+</section>
+</article>
+{% endblock %}

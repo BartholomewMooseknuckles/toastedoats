@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Reserve your box — {{ site.brand }}{% endblock %}
+{% block description %}Reserve your Toasted Oats pre-order. Nothing is charged until we ship.{% endblock %}
+{% block bodyclass %}page-checkout{% endblock %}
+{% block head %}<meta name="robots" content="noindex">{% endblock %}
+{% block main %}
+<section class="page-hero page-hero-tight">
+<div class="wrap">
+<p class="eyebrow">Pre-order</p>
+<h1 class="display display-xl">Reserve your box.</h1>
+<p class="lede measure">{{ site.launch.preorder_note }} When the first batch is ready we'll email you a link to pay - and you only pay if you still want it.</p>
+</div>
+</section>
+<section class="section section-tight checkout" data-module="checkout">
+<div class="wrap checkout-in">
+<form class="co-form" id="preorder" novalidate>
+<div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+<div class="field">
+<label for="co-name">Name</label>
+<input class="input" id="co-name" name="name" type="text" autocomplete="name" maxlength="80" placeholder="What should we call you?">
+</div>
+<div class="field">
+<label for="co-email">Email <span class="req">required</span></label>
+<input class="input" id="co-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="254" placeholder="you@email.com">
+<p class="field-err" data-err-for="email" aria-live="polite"></p>
+</div>
+<div class="field field-short">
+<label for="co-zip">ZIP code <span class="muted">(so we know where to ship first)</span></label>
+<input class="input" id="co-zip" name="zip" type="text" autocomplete="postal-code" inputmode="numeric" maxlength="12" placeholder="90210">
+</div>
+<fieldset class="field" data-co-sub>
+<legend>Delivery</legend>
+<label class="plan plan-inline"><input type="radio" name="plan" value="once" checked><span class="plan-body"><span class="plan-name">One-time</span><span class="plan-per">Just this box</span></span></label>
+<label class="plan plan-inline"><input type="radio" name="plan" value="subscribe"><span class="plan-body"><span class="plan-name">Subscribe &amp; save {{ site.subscribe.discount_pct }}%</span><span class="plan-per">Skip, swap or cancel any time</span></span></label>
+<div class="field" data-co-cadence hidden>
+<label for="co-cadence">How often</label>
+<select class="input" id="co-cadence" name="cadence">
+{% for c in site.subscribe.cadences %}<option value="{{ c.id }}"{% if c.id == site.subscribe.default %} selected{% endif %}>{{ c.label }}</option>{% endfor %}
+</select>
+</div>
+</fieldset>
+<div class="field">
+<label for="co-notes">Anything we should know? <span class="muted">(optional)</span></label>
+<textarea class="input" id="co-notes" name="notes" rows="3" maxlength="500" placeholder="Allergies, a flavor you wish existed, your dog's name."></textarea>
+</div>
+<p class="form-status" data-status aria-live="polite"></p>
+<button class="btn btn-lg btn-block" type="submit" data-co-submit>Reserve my box</button>
+<p class="small muted">By reserving you agree to the <a href="{{ url_for('pages.terms') }}">terms</a> and <a href="{{ url_for('pages.privacy') }}">privacy policy</a>. No payment is taken today.</p>
+</form>
+<aside class="co-summary">
+<h2 class="display display-s">Your box</h2>
+<ul class="cart-lines" data-cart-lines></ul>
+<div class="cart-empty" data-cart-empty>
+<p>Your box is empty.</p>
+<a class="btn btn-sm" href="{{ url_for('pages.flavors') }}">Shop flavors</a>
+</div>
+<div data-cart-footer hidden>
+<p class="cart-ship small" data-cart-ship></p>
+<div class="cart-total"><span>Subtotal</span><strong data-cart-subtotal>$0</strong></div>
+<div class="cart-total cart-total-sm"><span>Shipping</span><strong data-cart-shipping>$0</strong></div>
+<div class="cart-total cart-total-big"><span>Total at shipping</span><strong data-cart-total>$0</strong></div>
+</div>
+<noscript>
+<p class="small">This page needs JavaScript to build your box. Without it, you can still join the waitlist:</p>
+{{ signup('co-nojs', kind='waitlist', source='checkout-nojs') }}
+</noscript>
+</aside>
+</div>
+</section>
+{% endblock %}

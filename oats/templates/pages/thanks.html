@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}You're in — {{ site.brand }}{% endblock %}
+{% block description %}Your Toasted Oats box is reserved.{% endblock %}
+{% block bodyclass %}page-thanks{% endblock %}
+{% block head %}<meta name="robots" content="noindex">{% endblock %}
+{% block main %}
+<section class="page-hero" data-module="thanks">
+<div class="wrap">
+<p class="eyebrow">Reserved</p>
+<h1 class="display display-xl">You're in.</h1>
+<p class="lede measure">Your reference is <strong class="ref" data-ref>{{ request.args.get('ref', '')|e }}</strong>. We'll email you the moment the first batch is ready, with a link to pay - and only then.</p>
+<p class="marker marker-big">Stay toasted.</p>
+<div class="cta-row">
+<a class="btn" href="{{ url_for('pages.how') }}">How it works</a>
+<a class="btn btn-ghost" href="{{ url_for('pages.story') }}">Our story</a>
+</div>
+</div>
+</section>
+<section class="section section-tight">
+<div class="wrap narrow prose">
+<h2 class="display display-l">What happens next.</h2>
+<ol>
+<li>We finish the formula and lock the Nutrition Facts.</li>
+<li>The first batch gets made, toasted, swirled and packed.</li>
+<li>You get an email with your box and a checkout link. Pay then, or don't. No hard feelings, some disappointment.</li>
+</ol>
+</div>
+</section>
+{% endblock %}

@@ -1,0 +1,59 @@
+<footer class="ftr">
+<div class="wrap">
+<div class="ftr-top">
+<div class="ftr-brand">
+<p class="wordmark wordmark-ftr" aria-hidden="true"><span class="wordmark-l1">TOASTED</span><span class="wordmark-l2">OATS<sup>™</sup></span></p>
+<p class="ftr-tag marker">Stay toasted.</p>
+<p class="small muted">{{ site.descriptor }}. {{ site.shipping.regions }}</p>
+</div>
+<div class="ftr-news">
+<p class="ftr-head">Fresh batch, straight to your inbox</p>
+<p class="small muted">Drops, the monthly In Rotation flavor, and nothing else. No daily emails. We'd hate that too.</p>
+{{ signup('ftr-signup', kind='newsletter', source='footer', cta='Stay toasted') }}
+</div>
+</div>
+<div class="ftr-cols">
+<div>
+<p class="ftr-head">Shop</p>
+<ul>
+<li><a href="{{ url_for('pages.flavors') }}">All flavors</a></li>
+<li><a href="{{ url_for('pages.build') }}">Build a box</a></li>
+<li><a href="{{ url_for('pages.home') }}#shop">The Starter Box</a></li>
+<li><a href="{{ url_for('pages.checkout') }}">Your box</a></li>
+</ul>
+</div>
+<div>
+<p class="ftr-head">Learn</p>
+<ul>
+<li><a href="{{ url_for('pages.how') }}">How it works</a></li>
+<li><a href="{{ url_for('pages.story') }}">Our story</a></li>
+<li><a href="{{ url_for('pages.faq') }}">FAQ</a></li>
+</ul>
+</div>
+<div>
+<p class="ftr-head">Support</p>
+<ul>
+<li><a href="{{ url_for('pages.contact') }}">Contact</a></li>
+<li><a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></li>
+<li><a href="{{ url_for('pages.accessibility') }}">Accessibility</a></li>
+</ul>
+</div>
+<div>
+<p class="ftr-head">Follow</p>
+<ul>
+<li><a href="https://instagram.com/{{ site.contact.instagram }}" rel="noopener">Instagram</a></li>
+<li><a href="https://tiktok.com/@{{ site.contact.tiktok }}" rel="noopener">TikTok</a></li>
+<li><a href="{{ site.legal.parent_url }}" rel="noopener">{{ site.legal.parent }}</a></li>
+</ul>
+</div>
+</div>
+<div class="ftr-legal">
+<p>&copy; {{ year }} {{ site.legal.entity }}. A {{ site.legal.parent }} brand. Hemp hearts are a seed, not a drug: 0% THC, 100% nutty.</p>
+<ul>
+<li><a href="{{ url_for('pages.terms') }}">Terms</a></li>
+<li><a href="{{ url_for('pages.privacy') }}">Privacy</a></li>
+<li><a href="{{ url_for('pages.privacy') }}#choices">Do not sell or share my info</a></li>
+</ul>
+</div>
+</div>
+</footer>
